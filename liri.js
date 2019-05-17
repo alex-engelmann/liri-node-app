@@ -12,7 +12,19 @@ let input = process.argv[3];
 // let spotify = new Spotify(keys.Spotify)
 switch (command) {
     case "concert-this":
-
+        if (input === undefined) {
+            input = "Metallica";
+        }
+        axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
+            function (response) {
+                console.log(input + "'s next 3 events are:" + "\n")
+                for (let i = 0; i < 3; i++) {
+                    console.log("Venue name: " + response.data[i].venue.name);
+                    console.log("Venue location: " + response.data[i].venue.country);
+                    console.log("Date of event: " + moment(response.data[i].datetime).format("MM/DD/YYYY") + "\n");
+                }
+            }
+        );
         break;
 
     case "spotify-this-song":
