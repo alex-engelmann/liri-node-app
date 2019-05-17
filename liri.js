@@ -75,10 +75,10 @@ let liriBranch = function (command, input) {
                 }
 
                 let randomArray = data.split(",");
-                let command = randomArray[0];
-                let input = randomArray[1];
+                command = randomArray[0];
+                input = randomArray[1];
 
-                liriBranch(command,input);
+                liriBranch(command, input);
             });
             break;
         default:
@@ -88,4 +88,16 @@ let liriBranch = function (command, input) {
 
 liriBranch(command, input);
 
+let logInput = function (command, input) {
+
+    let text = command + "," + input + "\n";
+
+    fs.appendFile("log.txt", text, function (err) {
+
+        if (err) { console.log(err); }
+        else { console.log("Content logged!"); }
+    });
+}
+
+logInput(command, input);
 
