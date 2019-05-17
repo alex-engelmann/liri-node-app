@@ -4,12 +4,15 @@ let keys = require("./keys.js");
 
 let axios = require("axios");
 let moment = require('moment');
+let Spotify = require('node-spotify-api')
 
 let command = process.argv[2];
 let input = process.argv[3];
 
 
-// let spotify = new Spotify(keys.Spotify)
+let spotify = new Spotify(keys.spotify)
+
+
 switch (command) {
     case "concert-this":
         if (input === undefined) {
@@ -28,6 +31,15 @@ switch (command) {
         break;
 
     case "spotify-this-song":
+        spotify.search({ type: 'track', query: input }, function (err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            }
+            console.log("Artist: " + data.tracks.items[0].artists[0].name);
+            console.log("Song: " + data.tracks.items[0].name);
+            console.log("Link to song: " + data.tracks.items[0].external_urls.spotify);
+            console.log("Album: " + data.tracks.items[0].album.name);
+        })
 
         break;
 
