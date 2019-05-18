@@ -1,4 +1,4 @@
-
+'use strict';
 
 //Set up some requirements for the program
 require("dotenv").config();
@@ -7,20 +7,29 @@ let axios = require("axios");
 let moment = require('moment');
 let Spotify = require('node-spotify-api')
 let fs = require('fs');
+let spotify = new Spotify(keys.spotify)
 
 let command = process.argv[2];
-let input = process.argv[3];
+let input = process.argv.slice(3).join(" ")
 
-let spotify = new Spotify(keys.spotify)
+//this function will log the input into log.txt
+
+let logInput = function (command, input) {
+    let loggedText = command + "," + input + "\n";
+    fs.appendFile("./log.txt", loggedText, function (err) {
+        if (err) { console.log(err); }
+        else { console.log("Content logged!"); }
+    });
+}
 
 //This switch statement branches out into particular queries depending on the command
 
-//Put this in a function so that do-what-it-says can use it easily
+//This is in a function so that do-what-it-says can call it recursively
 let liriBranch = function (command, input) {
 
     switch (command) {
         case "concert-this":
-            if (input === undefined) {
+            if (!input){
                 input = "Metallica";
             }
             axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(
@@ -36,6 +45,9 @@ let liriBranch = function (command, input) {
             break;
 
         case "spotify-this-song":
+            if (!input){
+                input = "The Sign";
+            }
             spotify.search({ type: 'track', query: input }, function (err, data) {
                 if (err) {
                     return console.log('Error occurred: ' + err);
@@ -49,7 +61,7 @@ let liriBranch = function (command, input) {
             break;
 
         case "movie-this":
-            if (input === undefined) {
+            if (!input) {
                 input = "Mr. Nobody";
             }
             axios.get("http://www.omdbapi.com/?t=" + input + "&y=&plot-short&apikey=trilogy").then(
@@ -74,9 +86,9 @@ let liriBranch = function (command, input) {
                     return console.log(error);
                 }
 
-                let randomArray = data.split(",");
-                command = randomArray[0];
-                input = randomArray[1];
+                let textArray = data.split(",");
+                command = textArray[0];
+                input = textArray[1];
 
                 liriBranch(command, input);
             });
@@ -84,20 +96,7 @@ let liriBranch = function (command, input) {
         default:
             break;
     }
+    logInput(command, input);
 }
 
 liriBranch(command, input);
-
-let logInput = function (command, input) {
-
-    let text = command + "," + input + "\n";
-
-    fs.appendFile("log.txt", text, function (err) {
-
-        if (err) { console.log(err); }
-        else { console.log("Content logged!"); }
-    });
-}
-
-logInput(command, input);
-
