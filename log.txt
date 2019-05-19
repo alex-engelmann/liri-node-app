@@ -12,3 +12,5 @@ movie-this,Mr. Nobody
 concert-this,Gareth Emery
 spotify-this-song,Smells Like Teen Spirit
 movie-this,Forrest Gump
+do-what-it-says,
+spotify-this-song,"I Want it That Way"
