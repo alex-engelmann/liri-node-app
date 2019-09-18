@@ -30,3 +30,8 @@ do-what-it-says,
 concert-this,"Metallica"
 do-what-it-says,
 concert-this,Metallica
+concert-this,gareth emery
+concert-this,gareth emery
+concert-this,Metallica
+do-what-it-says,
+concert-this,Snoop Dogg

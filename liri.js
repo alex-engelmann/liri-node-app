@@ -37,7 +37,7 @@ let liriBranch = function (command, input) {
                     console.log(input + "'s next 3 events are:" + "\n")
                     for (let i = 0; i < 3; i++) {
                         console.log("Venue name: " + response.data[i].venue.name);
-                        console.log("Venue location: " + response.data[i].venue.country);
+                        console.log("Venue location: " + response.data[i].venue.city + ", " + response.data[i].venue.region + ", " + response.data[i].venue.country);
                         console.log("Date of event: " + moment(response.data[i].datetime).format("MM/DD/YYYY") + "\n");
                     }
                 }
