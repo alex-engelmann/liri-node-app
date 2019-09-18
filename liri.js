@@ -2,12 +2,12 @@
 
 //Set up some requirements for the program
 require("dotenv").config();
-let keys = require("./keys.js");
+// let keys = require("./keys.js");
 let axios = require("axios");
 let moment = require('moment');
-let Spotify = require('node-spotify-api')
+// let Spotify = require('node-spotify-api')
 let fs = require('fs');
-let spotify = new Spotify(keys.spotify)
+// let spotify = new Spotify(keys.spotify)
 
 let command = process.argv[2];
 let input = process.argv.slice(3).join(" ")
@@ -44,21 +44,21 @@ let liriBranch = function (command, input) {
             );
             break;
 
-        case "spotify-this-song":
-            if (!input){
-                input = "The Sign";
-            }
-            spotify.search({ type: 'track', query: input }, function (err, data) {
-                if (err) {
-                    return console.log('Error occurred: ' + err);
-                }
-                console.log("Artist: " + data.tracks.items[0].artists[0].name);
-                console.log("Song: " + data.tracks.items[0].name);
-                console.log("Link to song: " + data.tracks.items[0].external_urls.spotify);
-                console.log("Album: " + data.tracks.items[0].album.name);
-            })
+        // case "spotify-this-song":
+        //     if (!input){
+        //         input = "The Sign";
+        //     }
+        //     spotify.search({ type: 'track', query: input }, function (err, data) {
+        //         if (err) {
+        //             return console.log('Error occurred: ' + err);
+        //         }
+        //         console.log("Artist: " + data.tracks.items[0].artists[0].name);
+        //         console.log("Song: " + data.tracks.items[0].name);
+        //         console.log("Link to song: " + data.tracks.items[0].external_urls.spotify);
+        //         console.log("Album: " + data.tracks.items[0].album.name);
+        //     })
 
-            break;
+        //     break;
 
         case "movie-this":
             if (!input) {
