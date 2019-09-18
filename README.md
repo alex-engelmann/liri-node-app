@@ -2,7 +2,9 @@
 
 ### Overview
 
-This Node app takes in one of 4 commands as parameters:
+This Node.js app queries different concert (BandsInTown), music(Spotify), and movie(OMDB) APIs and displays relevant results to the user.  It can load commands from a text file, and logs all queries to a text file as well.  Note that since Spotify API access requires a private key, relevant code is commented out so anyone can quickly clone and test this repository.
+
+It can take in one of 4 commands as parameters:
 
 1. `concert-this` will find and display an artist's next 3 upcoming events, including their dates and locations.
 
@@ -45,6 +47,4 @@ This Node app requires the following NPM modules in order to function properly:
    * [Moment](https://www.npmjs.com/package/moment)
 
    * [DotEnv](https://www.npmjs.com/package/dotenv)
-   
-   Note that to run this locally, you will need to provide your own Spotify API key.  BandsInTown and OMDB keys are already included.
    
