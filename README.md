@@ -2,7 +2,7 @@
 
 ### Overview
 
-This Node.js app queries different concert (BandsInTown), music(Spotify), and movie(OMDB) APIs and displays relevant results to the user.  It can load commands from a text file, and logs all queries to a text file as well.  Note that since Spotify API access requires a private key, relevant code is commented out so anyone can quickly clone and test this repository.
+This Node.js app queries different concert (BandsInTown), music (Spotify), and movie (OMDB) APIs and displays relevant results to the user.  It can load commands from a text file, and logs all queries to a text file as well.  Note that since Spotify API access requires a private key, relevant code is commented out so anyone can quickly clone and test this repository.
 
 It can take in one of 4 commands as parameters:
 
